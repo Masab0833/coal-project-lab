@@ -1,0 +1,606 @@
+INCLUDE Irvine32.inc
+.data             
+head0 db 10,13,'******************************************',0
+head01 db 10,13,'*   Welcome to Karachi Airline Service   *',0 
+head02 db 10,13,'******************************************',0  
+head1 db 10,13,'* * * * * * * * * * MENU * * * * * * * * *',0
+menu1 db 10,13,'*     Press 1 for Flight Booking         *',0
+menu2 db 10,13,'*     Press 2 for Ticket Prices          *',0
+menu3 db 10,13,'*     Press 3 for Promo Code             *',0
+menu4 db 10,13,'*     Press 4 for Available Flights      *',0  
+menu5 db 10,13,'*     Press 5 for Flight Status          *',0
+menu6 db 10,13,'*     Press 6 for About                  *',0
+menu7 db 10,13,'*     Press 7 for Exit                   *',0
+head2 db 10,13,'* * * * * * * * * * ** * * * * * * * * * *',0 
+
+menu9 db 10,13,'*     Press 1 for Arrival                *',0
+menu10 db 10,13,'*     Press 2 for Departure              *',0
+
+menu11 db 10,13,'* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *',0
+menu12 db 10,13,'* SNo.   TIME        FLIGHT     TO            GATE NO:   REMARKS  *',0
+menu13 db 10,13,'* 1.     12:00 pm    PK-259     Islamabad     12         On Time  *',0
+menu14 db 10,13,'* 2.     12:15 pm    FA-697     Paris         09         Delayed  *',0
+menu15 db 10,13,'* 3.     12:30 pm    IT-290     Rome          10         On Time  *',0
+menu16 db 10,13,'* 4.     12:45 pm    IN-723     Delhi         07         On Time  *',0
+menu17 db 10,13,'* 5.     12:50 pm    AU-237     Canberra      03         Canceled *',0
+menu18 db 10,13,'* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *',0
+
+menu19 db 10,13,'* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *',0
+menu20 db 10,13,'* SNo.   TIME        FLIGHT     FROM            GATE NO:   REMARKS  *',0
+menu21 db 10,13,'* 1.     13:05 pm    IN-456     Kolkata         05         On Time  *',0
+menu22 db 10,13,'* 2.     13:20 pm    BD-698     Dhaka           11         Canceled *',0
+menu23 db 10,13,'* 3.     13:25 pm    IT-854     Venice          08         On Timee *',0
+menu24 db 10,13,'* 4.     13:35 pm    PK-453     Lahore          15         Delayed  *',0
+menu25 db 10,13,'* 5.     13:40 pm    US-235     New York        01         Canceled *',0
+menu26 db 10,13,'* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *',0 
+
+
+menu27 db 10,13,'* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *',0
+menu28 db 10,13,'* SNo.   FLIGHT      FROM         TO          ECONOMIC FAIR  EXECUTIVE FAIR *',0
+menu29 db 10,13,'* 1.     PK-247      Karachi      Paris       50000           60000         *',0
+menu30 db 10,13,'* 2.     IT-686      Karachi      Venice      60000           70000         *',0
+menu31 db 10,13,'* 3.     IN-253      Karachi      Delhi       30000           40000         *',0
+menu32 db 10,13,'* 4.     US-357      Karachi      New York    80000           90000         *',0
+menu33 db 10,13,'* 5.     AU-582      Karachi      Canberra    40000           50000         *',0
+menu34 db 10,13,'* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *',0 
+
+menu35 db 10,13,'* * * * * * * * * * * * * * * * * * * * * * * * * * *',0
+menu36 db 10,13,'* SNO:    COUNTRY    CAPITAL         TICKET PRICE   *',0
+menu37 db 10,13,'* 1.      USA        Washington DC   50000          *',0
+menu38 db 10,13,'* 2.      India      New Delhi       30000          *',0
+menu39 db 10,13,'* 3.      France     Paris           80000          *',0
+menu40 db 10,13,'* 4.      UAE        Dubai           20000          *',0
+menu41 db 10,13,'* 5.      Italy      Rome            60000          *',0
+menu42 db 10,13,'* * * * * * * * * * * * * * * * * * * * * * * * * * *',0 
+
+choice db 10,13, 'Enter your choice: ',0   
+retry  db 10,13, 'Retry [y/n]: ',0
+msg db 10,13,'This system is proudly developed by Meeran Uz Zaman,Muhammad Masab and Rayyan Ali. We are dedicated to delivering a seamless and reliable application to meet your travel needs.',0
+
+arr1 db 20 dup (0)
+msg1 db 10,13,'Name: ',0  
+nam db 10,13,'Name = ',0 
+
+arr2 db 20 dup (0) 
+msg2 db 10,13,'Surname: ',0  
+surnam db 10,13,'Surname = ',0 
+
+arr3 db 20 dup (0) 
+msg3 db 10,13,'Gender: ',0  
+gender db 10,13,'Gender = ',0
+
+arr4 db 20 dup (0) 
+msg4 db 10,13,'Date of Birth: ',0  
+dob db 10,13,'Date of Birth = ',0
+
+arr5 db 20 dup (0) 
+msg5 db 10,13,'From: ',0  
+from db 10,13,'From = ',0
+
+arr6 db 20 dup (0) 
+msg6 db 10,13,'To: ',0  
+to db 10,13,'To = ',0
+
+arr7 db 20 dup (0) 
+msg7 db 10,13,'Passport No#: ',0  
+pasp db 10,13,'Passport No# = ',0
+
+arr8 db 20 dup (0) 
+msg8 db 10,13,'Nationality: ',0  
+national db 10,13,'Nationality = ',0 
+
+msg9 db 10,13,'Enter promo: ',0
+valid db 10,13,'Valid Promo!',0 
+invalid db 10,13,'Invalid Promo!',0
+promo1 DWORD 13231    
+
+input db 10,13,'Press 1 for First Class',10,13,'Press 2 for Business Class',10,13,'Press 3 for Premium',10,13,'Press 4 for Economy Class',10,13,'Choose Class for ticket :', '',0
+first db 10,13,'First Class price = 5000',0
+business db 10,13,'Business Class price = 4000',0
+premium db 10,13,'Premiumt Class price = 3000',0
+economy db 10,13,'Economy Class price = 2000',0
+
+msgp db 10,13, 'The new Discounted prices are ',0
+first1 db 10,13,'First Class price = 3000',0
+business1 db 10,13,'Business Class price = 2000',0
+premium1 db 10,13,'Premiumt Class price = 1500',0
+economy1 db 10,13,'Economy Class price = 1000',0
+new1 db 10,13,'Would like to book the flight now ',0
+new2 db 10,13,'press n for new upgraded flight or e to exit  ',0
+booknew db 10,13,'Which class would you like to book ',0 
+total db 10,13,'Your new total is ',0
+
+
+.code
+main proc 
+  menu:  
+      
+      lea edx,head0
+      call Writestring
+      
+       lea edx,head01
+      call Writestring
+      
+       lea edx,head02
+      call Writestring
+      
+       lea edx,head1
+      call Writestring
+      
+       lea edx,menu1
+      call Writestring
+      
+       lea edx,menu2
+      call Writestring
+
+      lea edx,menu3
+      call Writestring
+
+      lea edx,menu4
+      call Writestring
+      
+      lea edx,menu5
+      call Writestring
+      
+      lea edx,menu6
+      call Writestring
+      
+      lea edx,menu7
+      call Writestring 
+      
+     lea edx,head2
+      call Writestring
+      
+  _cmp:
+      
+      lea edx,choice
+      call Writestring
+      
+     call readchar
+      
+      cmp al,'1'
+      je _booking
+      jb menu 
+      
+      cmp al,'2'
+      je prices 
+      
+      cmp al,'3'
+      je _promo
+
+      cmp al,'4'
+      je available_flights 
+      
+      cmp al,'5'
+      je flight_status
+      
+      cmp al,'6'
+      je about
+      
+      cmp al,'7'
+      je _exit
+      ja menu 
+  _booking:
+      call booking 
+      ;congratulate msg
+      
+  prices:
+      lea edx,menu35
+      call writestring
+      
+      lea edx,menu36
+      call writestring
+      
+      lea edx,menu37
+      call writestring
+      
+      lea edx,menu38
+      call writestring
+      
+      lea edx,menu39
+      call writestring
+      
+      lea edx,menu40
+      call writestring
+      
+      lea edx,menu41
+      call writestring
+      
+      lea edx,menu42
+      call writestring
+      
+      jmp _retry   
+  _promo:
+    mov esi,offset promo1  
+    
+    lea edx,msg9
+    call writestring
+    
+    mov cx,5
+   Pcode:  
+    call readint
+    
+    cmp eax,[esi] 
+    jne _invalid
+    
+    
+    lea edx,valid
+    call writestring  
+    
+    jmp validcode 
+    
+    jmp _retry
+  _invalid:
+    lea edx,invalid
+    call writestring
+    
+    jmp _retry     
+   
+  available_flights:
+      lea edx,menu27
+      call writestring
+      
+      lea edx,menu28
+       call writestring
+      
+      lea edx,menu29
+       call writestring
+      
+      lea edx,menu30
+      call writestring
+      
+      lea edx,menu31
+      call writestring 
+      
+      lea edx,menu32
+      call writestring
+      
+      lea edx,menu33
+      call writestring 
+      
+      lea edx,menu34
+       call writestring 
+      
+      jmp _retry 
+    
+  flight_status:
+      lea edx,head1
+       call writestring
+      
+      lea edx,menu9
+       call writestring
+      
+      lea edx,menu10
+      call writestring
+      
+      lea edx,head2
+       call writestring
+      
+      
+      lea edx,choice
+       call writestring
+      
+      call readchar
+      
+      cmp al,'1'
+      je arrival
+      jb menu
+      
+      cmp al,'2'
+      je departure 
+      ja menu
+      
+   arrival:
+      lea edx,menu11
+        call writestring
+      
+      lea edx,menu12
+     call writestring
+      
+      lea edx,menu13
+        call writestring
+      
+      lea edx,menu14
+        call writestring
+      
+      lea edx,menu15
+       call writestring
+      
+      lea edx,menu16
+      call writestring   
+      
+      lea edx,menu17
+       call writestring 
+      
+      lea edx,menu18
+       call writestring     
+      
+      jmp _retry
+           
+   departure:
+      lea edx,menu19
+       call writestring      
+      
+      lea edx,menu20
+      call writestring 
+      
+      lea edx,menu21
+       call writestring
+
+      lea edx,menu22
+       call writestring 
+      
+      lea edx,menu23
+      call writestring
+      
+      lea edx,menu24
+       call writestring 
+      
+      lea edx,menu25
+      call writestring     
+      
+      lea edx,menu26
+       call writestring  
+      jmp _retry
+      
+  about:   
+      lea edx,msg
+      call writestring 
+      
+      jmp _retry  
+      
+ _retry::
+     lea edx,retry
+     call writestring
+     
+     call readchar
+     
+     cmp al,'y'
+     je menu
+     
+     cmp al,'n'
+     je _exit
+
+     ja _retry
+        
+  _exit::
+    call DumpRegs          
+    mov eax, 0             
+    call ExitProcess     
+main endp
+
+booking proc
+   class:  
+    lea edx,input
+    call writestring
+    
+    call readchar
+    
+    cmp al,'1'
+    je _first
+    jb _retry
+    
+    cmp al,'2'
+    je _business
+    
+    cmp al,'3'
+    je _premium
+    
+    cmp al,'4'
+    je _economy
+    ja _retry 
+   
+  _first:
+    lea edx,first
+     call writestring 
+    
+    jmp book  
+  _business:
+    lea edx,business
+    call writestring 
+    
+    jmp book 
+  _premium: 
+    lea edx,premium
+     call writestring
+    
+    jmp book  
+  _economy:
+    lea edx,economy
+    call writestring
+    
+    jmp book 
+  book:  
+     lea edx, msg1              
+    call WriteString 
+    
+    lea edx, arr1            
+    mov ecx, 20             
+    call ReadString
+
+      lea edx, msg2              
+    call WriteString 
+    
+    lea edx, arr2           
+    mov ecx, 20             
+    call ReadString
+
+      lea edx, msg3            
+    call WriteString 
+    
+    lea edx, arr3           
+    mov ecx, 20             
+    call ReadString
+
+      lea edx, msg4           
+    call WriteString 
+    
+    lea edx, arr4          
+    mov ecx, 20             
+    call ReadString
+
+      lea edx, msg5             
+    call WriteString 
+    
+    lea edx, arr5         
+    mov ecx, 20             
+    call ReadString
+
+      lea edx, msg6             
+    call WriteString 
+    
+    lea edx, arr6          
+    mov ecx, 20             
+    call ReadString
+
+      lea edx, msg7             
+    call WriteString 
+    
+    lea edx, arr7         
+    mov ecx, 20             
+    call ReadString
+
+      lea edx, msg8             
+    call WriteString 
+    
+    lea edx, arr8         
+    mov ecx, 20             
+    call ReadString
+ 
+  print:
+    
+    lea edx,nam
+     call writestring 
+    
+    lea edx,arr1
+     call writestring  
+    
+    lea edx,surnam
+   call writestring
+    
+    lea edx,arr2
+     call writestring 
+    
+    lea edx,gender
+     call writestring
+    
+    lea edx,arr3
+    call writestring 
+    
+    lea edx,dob
+     call writestring
+    
+    lea edx,arr4
+     call writestring
+    
+    lea edx,from
+    call writestring
+    
+    lea edx,arr5
+     call writestring
+    
+    lea edx,to
+    call writestring
+    
+    lea edx,arr6
+     call writestring
+    
+    lea edx,pasp
+     call writestring
+    
+    lea edx,arr7
+     call writestring
+    
+    lea edx,national
+     call writestring
+    
+    lea edx,arr8
+    call writestring   
+    
+    jmp _retry 
+    
+validcode::
+    lea edx,first1
+     call writestring
+
+    lea edx,business1
+    call writestring 
+
+    lea edx,premium1
+    call writestring 
+
+    lea edx,economy1
+    call writestring   
+
+    lea edx,new1
+     call writestring
+
+    lea edx,new2
+     call writestring  
+
+    call readchar
+
+    cmp al,'n'
+    jmp newbook
+
+    cmp al,'e'
+    je _exit
+
+newbook:
+    lea edx,booknew
+     call writestring
+
+    lea edx,input
+    call writestring
+
+    call readchar
+
+    cmp al,'1'
+    je book1
+    jb _retry
+
+    cmp al,'2'
+    je book2
+
+    cmp al,'3'
+    je book3
+
+    cmp al,'4'
+    je book4
+
+book1: 
+    lea edx,total
+     call writestring 
+
+    lea edx,first1
+     call writestring 
+    jmp book 
+       
+book2: 
+    lea edx,total
+    call writestring
+    
+    lea edx,business1
+     call writestring
+    jmp book 
+
+book3:     
+
+    lea edx,total
+     call writestring 
+
+    lea edx,premium1
+    call writestring 
+    jmp book 
+
+book4:
+
+    lea edx,total
+    call writestring 
+    lea edx,economy1
+     call writestring
+    jmp book 
+    
+    booking endp
+ret
+end main 
