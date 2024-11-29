@@ -215,9 +215,6 @@ main proc
     
     lea edx,msg9
     call writestring
-    
-    mov cx,5
-   Pcode:  
     call readint
     
     cmp eax,[esi] 
@@ -369,8 +366,7 @@ main proc
     call ExitProcess     
 main endp
 
-booking proc
-   class:  
+booking proc 
     lea edx,input
     call writestring
     
