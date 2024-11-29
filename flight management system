@@ -55,7 +55,7 @@ menu42 db 10,13,'* * * * * * * * * * * * * * * * * * * * * * * * * * *',0
 
 choice db 10,13, 'Enter your choice: ',0   
 retry  db 10,13, 'Retry [y/n]: ',0
-msg db 10,13,'This system is proudly developed by Meeran Uz Zaman,Muhammad Masab and Rayyan Ali. We are dedicated to delivering a seamless and reliable application to meet your travel needs.',0
+msg db 10,13,'This system is developed by Meeran Uz Zaman,Muhammad Masab and Rayyan Ali. We are dedicated to delivering a seamless and reliable application to meet your travel needs.',0
 
 arr1 db 20 dup (0)
 msg1 db 10,13,'Name: ',0  
