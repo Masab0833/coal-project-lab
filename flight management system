@@ -214,10 +214,7 @@ main proc
     mov esi,offset promo1  
     
     lea edx,msg9
-    call writestring
-    
-    mov cx,5
-   Pcode:  
+    call writestring 
     call readint
     
     cmp eax,[esi] 
