@@ -27,7 +27,7 @@ menu18 db 10,13,'* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 menu19 db 10,13,'* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *',0
 menu20 db 10,13,'* SNo.   TIME        FLIGHT     FROM            GATE NO:   REMARKS  *',0
-menu21 db 10,13,'* 1.     13:05 pm    IN-456     Kolkata         05         On Time  *',0
+menu21 db 10,13,'* 1.     13:05 pm    IN-456     Karachi         05         On Time  *',0
 menu22 db 10,13,'* 2.     13:20 pm    BD-698     Dhaka           11         Canceled *',0
 menu23 db 10,13,'* 3.     13:25 pm    IT-854     Venice          08         On Timee *',0
 menu24 db 10,13,'* 4.     13:35 pm    PK-453     Lahore          15         Delayed  *',0
@@ -39,7 +39,7 @@ menu27 db 10,13,'* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 menu28 db 10,13,'* SNo.   FLIGHT      FROM         TO          ECONOMIC FAIR  EXECUTIVE FAIR *',0
 menu29 db 10,13,'* 1.     PK-247      Karachi      Paris       50000           60000         *',0
 menu30 db 10,13,'* 2.     IT-686      Karachi      Venice      60000           70000         *',0
-menu31 db 10,13,'* 3.     IN-253      Karachi      Delhi       30000           40000         *',0
+menu31 db 10,13,'* 3.     IN-253      Karachi      Dubai       30000           40000         *',0
 menu32 db 10,13,'* 4.     US-357      Karachi      New York    80000           90000         *',0
 menu33 db 10,13,'* 5.     AU-582      Karachi      Canberra    40000           50000         *',0
 menu34 db 10,13,'* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *',0 
