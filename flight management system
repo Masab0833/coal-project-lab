@@ -27,7 +27,7 @@ menu18 db 10,13,'* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 menu19 db 10,13,'* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *',0
 menu20 db 10,13,'* SNo.   TIME        FLIGHT     FROM            GATE NO:   REMARKS  *',0
-menu21 db 10,13,'* 1.     13:05 pm    IN-456     Karachi         05         On Time  *',0
+menu21 db 10,13,'* 1.     13:05 pm    IN-456     Kolkata         05         On Time  *',0
 menu22 db 10,13,'* 2.     13:20 pm    BD-698     Dhaka           11         Canceled *',0
 menu23 db 10,13,'* 3.     13:25 pm    IT-854     Venice          08         On Timee *',0
 menu24 db 10,13,'* 4.     13:35 pm    PK-453     Lahore          15         Delayed  *',0
@@ -39,7 +39,7 @@ menu27 db 10,13,'* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 menu28 db 10,13,'* SNo.   FLIGHT      FROM         TO          ECONOMIC FAIR  EXECUTIVE FAIR *',0
 menu29 db 10,13,'* 1.     PK-247      Karachi      Paris       50000           60000         *',0
 menu30 db 10,13,'* 2.     IT-686      Karachi      Venice      60000           70000         *',0
-menu31 db 10,13,'* 3.     IN-253      Karachi      Dubai       30000           40000         *',0
+menu31 db 10,13,'* 3.     IN-253      Karachi      Delhi       30000           40000         *',0
 menu32 db 10,13,'* 4.     US-357      Karachi      New York    80000           90000         *',0
 menu33 db 10,13,'* 5.     AU-582      Karachi      Canberra    40000           50000         *',0
 menu34 db 10,13,'* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *',0 
@@ -55,7 +55,7 @@ menu42 db 10,13,'* * * * * * * * * * * * * * * * * * * * * * * * * * *',0
 
 choice db 10,13, 'Enter your choice: ',0   
 retry  db 10,13, 'Retry [y/n]: ',0
-msg db 10,13,'This system is developed by Meeran Uz Zaman,Muhammad Masab and Rayyan Ali. We are dedicated to delivering a seamless and reliable application to meet your travel needs.',0
+msg db 10,13,'This system is proudly developed by Meeran Uz Zaman,Muhammad Masab and Rayyan Ali. We are dedicated to delivering a seamless and reliable application to meet your travel needs.',0
 
 arr1 db 20 dup (0)
 msg1 db 10,13,'Name: ',0  
@@ -94,7 +94,7 @@ valid db 10,13,'Valid Promo!',0
 invalid db 10,13,'Invalid Promo!',0
 promo1 DWORD 13231    
 
-input db 10,13,'Press 1 for First Class',10,13,'Press 2 for Business Class',10,13,'Press 3 for Premium',10,13,'Press 4 for Economy Class',10,13,'Choose Class for ticket :', '',0
+input db 10,13,'Press 1 for First Class',10,13,'Press 2 for Business Class',10,13,'Press 3 for Premium',10,13,'Press 4 for Economy Class',10,13,'Choose Class for ticket :',0
 first db 10,13,'First Class price = 5000',0
 business db 10,13,'Business Class price = 4000',0
 premium db 10,13,'Premiumt Class price = 3000',0
@@ -214,7 +214,10 @@ main proc
     mov esi,offset promo1  
     
     lea edx,msg9
-    call writestring 
+    call writestring
+    
+    mov cx,5
+   Pcode:  
     call readint
     
     cmp eax,[esi] 
